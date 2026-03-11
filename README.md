@@ -85,7 +85,7 @@ Dataset will be cached at `~/.cache/kagglehub/datasets/faizalkarim/flood-area-se
 
 ### Training
 
-Open and run `notebook.ipynb` from top to bottom. Sections:
+Open and run `notebooks/notebook.ipynb` from top to bottom. Sections:
 
 1. **Setup & Imports** — installs packages, checks GPU
 2. **Dataset Loading** — downloads via kagglehub, locates Image/ and Mask/ directories
@@ -108,7 +108,7 @@ If you have the trained `.keras` files:
 ```python
 import tensorflow as tf
 model = tf.keras.models.load_model(
-    'best_flood_unet_bce_dice.keras',
+    'notebooks/best_flood_unet_bce_dice.keras',
     custom_objects={'bce_dice_loss': bce_dice_loss, 'dice_coeff_metric': dice_coeff_metric}
 )
 # Then run the evaluation cells in Section 11
@@ -120,14 +120,14 @@ model = tf.keras.models.load_model(
 
 ```
 mini-project-8/
-├── notebook.ipynb                   # Full pipeline
+├── notebooks/
+│   ├── notebook.ipynb               # Full pipeline
+│   ├── best_flood_unet_bce_dice.keras   # Excluded from git (see .gitignore)
+│   ├── best_flood_unet_dice.keras       # Excluded from git (see .gitignore)
+│   └── best_mobilenet_unet.keras        # Excluded from git (see .gitignore)
 ├── requirements.txt
 ├── README.md
-├── .gitignore
-└── saved_models/                    # Excluded from git (see .gitignore)
-    ├── best_flood_unet_bce_dice.keras
-    ├── best_flood_unet_dice.keras
-    └── best_mobilenet_unet.keras
+└── .gitignore
 ```
 
 ---
@@ -168,4 +168,4 @@ Good predictions (mIoU ~0.92–0.94): Clear flood regions with strong color cont
 
 Poor predictions (mIoU ~0.40–0.43): Complex scenes with narrow flood corridors, partially submerged vegetation, or muddy water that blends visually with dry terrain.
 
-See `notebook.ipynb` Section 12 for full visualizations with ground truth and error maps.
+See `notebooks/notebook.ipynb` Section 12 for full visualizations with ground truth and error maps.
